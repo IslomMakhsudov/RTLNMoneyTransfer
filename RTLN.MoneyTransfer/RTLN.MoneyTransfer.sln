@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTLN.MoneyTransfer.WebApi", "RTLN.MoneyTransfer.WebApi\RTLN.MoneyTransfer.WebApi.csproj", "{48405317-DFBF-46CC-9C49-B7E65DCFB0CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTLN.MoneyTransfer.Core", "RTLN.MoneyTransfer.Core\RTLN.MoneyTransfer.Core.csproj", "{A5ECF191-3131-4A23-AFB0-E69B2183D495}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTLN.MoneyTransfer.Infrastructure", "RTLN.MoneyTransfer.Infrastructure\RTLN.MoneyTransfer.Infrastructure.csproj", "{A8F47CB4-D8A0-453A-BEFB-2D8A2552A8E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48405317-DFBF-46CC-9C49-B7E65DCFB0CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48405317-DFBF-46CC-9C49-B7E65DCFB0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48405317-DFBF-46CC-9C49-B7E65DCFB0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48405317-DFBF-46CC-9C49-B7E65DCFB0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ECF191-3131-4A23-AFB0-E69B2183D495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ECF191-3131-4A23-AFB0-E69B2183D495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ECF191-3131-4A23-AFB0-E69B2183D495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ECF191-3131-4A23-AFB0-E69B2183D495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F47CB4-D8A0-453A-BEFB-2D8A2552A8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F47CB4-D8A0-453A-BEFB-2D8A2552A8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F47CB4-D8A0-453A-BEFB-2D8A2552A8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F47CB4-D8A0-453A-BEFB-2D8A2552A8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F0AF9DB-D626-40E0-8484-26B5611206CF}
+	EndGlobalSection
+EndGlobal
