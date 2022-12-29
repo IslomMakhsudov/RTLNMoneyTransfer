@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RTLN.MoneyTransfer.Core.Entities
 {
-    public class Originator
+    public class ClientList
     {
         public Identification Identification { get; set; }
-        public Participant Participant { get; set; }
+        public string DisplayName { get; set; }
+        public FullParticipant Participant { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RTLN.MoneyTransfer.Core.Entities
 {
-    public class Originator
+    public class AdditionalIdentification
     {
-        public Identification Identification { get; set; }
-        public Participant Participant { get; set; }
+        public string Type { get; set; }
+        public string Value { get; set; }
     }
 }

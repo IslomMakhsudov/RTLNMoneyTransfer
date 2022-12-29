@@ -2,5 +2,6 @@
 {
     public class StateOfTransferModelRequest
     {
+        public string OriginatorReferenceNumber { get; set; }
     }
 }
