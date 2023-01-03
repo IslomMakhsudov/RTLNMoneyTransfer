@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.ModelRequests;
+using RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services;
 
 namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
@@ -7,5 +9,17 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
     [ApiController]
     public class ExchangeRatesController : ControllerBase
     {
+        private readonly IExchangeRateService _exchangeRateService;
+        public ExchangeRatesController(IExchangeRateService exchangeRateService)
+        {
+            _exchangeRateService = exchangeRateService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetExchangeRate([FromBody] ExchangeRateModelRequest modelRequest)
+        {
+            var result = await _exchangeRateService.GetExchangeRates(modelRequest);
+            return Ok(result);
+        }
     }
 }

@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RTLN.MoneyTransfer.WebApi.Modules.ParticipantList.ModelRequests;
+using RTLN.MoneyTransfer.WebApi.Modules.ParticipantList.ModelResponses;
+using RTLN.MoneyTransfer.WebApi.Modules.ParticipantList.Services;
 
 namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
@@ -7,5 +11,18 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
     [ApiController]
     public class ParticipantListController : ControllerBase
     {
+        private readonly IParticipantListService _participantListService;
+
+        public ParticipantListController(IParticipantListService participantListService)
+        {
+            _participantListService = participantListService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetParticipantList(ParticipantListModelRequest modelRequest)
+        {
+            var result = await _participantListService.GetParticipantListAsync(modelRequest);
+            return Ok(result); 
+        }
     }
 }
