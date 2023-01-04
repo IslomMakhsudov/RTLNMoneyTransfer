@@ -13,7 +13,7 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.Services
             _config = config;
         }
 
-        public async Task<CheckTransferModelResponse> CheckTransfer(CheckTransferModelRequest modelRequest)
+        public async Task<CheckTransferModelResponse> CheckTransferAsync(CheckTransferModelRequest modelRequest)
         {
             var client = new RestClient($"{_config.GetValue<string>("PlatformUrl")}/v2/transfer/check");
 
