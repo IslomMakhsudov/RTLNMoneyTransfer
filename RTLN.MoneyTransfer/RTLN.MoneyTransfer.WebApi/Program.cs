@@ -1,4 +1,5 @@
 using RTLN.MoneyTransfer.Infrastructure;
+using RTLN.MoneyTransfer.WebApi.Middleware;
 using RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services;
 using RTLN.MoneyTransfer.WebApi.Modules.ParticipantList.Services;
 using RTLN.MoneyTransfer.WebApi.Modules.ReceiverList.Services;
@@ -24,6 +25,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 
