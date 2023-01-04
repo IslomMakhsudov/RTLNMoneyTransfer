@@ -1,5 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.ModelRequests;
+using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.Services;
+using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.ModelRequests;
+using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.Services;
+using RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelRequests;
+using RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.Services;
 
 namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
@@ -7,5 +13,36 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
     [ApiController]
     public class TransferController : ControllerBase
     {
+        private readonly ICheckTransferService _checkTransferService;
+        private readonly IConfirmTransferService _confirmTransferService;
+        private readonly IStateOfTransferService _stateOfTransferService;
+        public TransferController(ICheckTransferService checkTransferService, IConfirmTransferService confirmTransferService, IStateOfTransferService stateOfTransferService)
+        {
+            _checkTransferService = checkTransferService;
+            _confirmTransferService = confirmTransferService;
+            _stateOfTransferService = stateOfTransferService;
+        }
+
+        [HttpGet("check")]
+        public async Task<IActionResult> CheckTransfer(CheckTransferModelRequest modelRequest)
+        {
+            var result = await _checkTransferService.CheckTransferAsync(modelRequest);
+            return Ok(result);
+        }
+
+        [HttpGet("confirm")]
+        public async Task<IActionResult> ConfirmTransfer(ConfirmTransferModelRequest modelRequest)
+        {
+            var result = await _confirmTransferService.ConfirmTransferAsync(modelRequest);
+            return Ok(result);
+        }
+
+        [HttpGet("state")]
+        public async Task<IActionResult> StateOfTransfer(StateOfTransferModelRequest modelRequest)
+        {
+            var result = await _stateOfTransferService.StateOfTransferAsync(modelRequest);
+            return Ok(result);
+        }
+
     }
 }
