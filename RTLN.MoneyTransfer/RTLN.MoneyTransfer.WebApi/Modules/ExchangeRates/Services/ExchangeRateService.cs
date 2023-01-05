@@ -3,6 +3,7 @@ using RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.ModelResponses;
 using RestSharp.Serializers.Json;
 using RestSharp;
 using RTLN.MoneyTransfer.Core.Entities;
+using System.Text.Json;
 
 namespace RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services
 {
@@ -19,9 +20,9 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services
 /*            var client = new RestClient($"{_config.GetValue<string>("PlatformUrl")}/v2/exchangerates");
 
             var request = new RestRequest()
-                .AddJsonBody(modelRequest);*/
+                .AddJsonBody(modelRequest);
 
-            //var response = await client.PostAsync<ExchangeRateModelsResponse>(request);
+            var response = await client.PostAsync<string>(request);*/
 
             var response = FillExchangeRate();
 
@@ -33,18 +34,12 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services
 
         private ExchangeRateModelsResponse FillExchangeRate()
         {
-            var exchangeRates = new ExchangeRateModelsResponse();
-            exchangeRates.EffectiveDate = DateTime.Now;
+            string jsonText = "{\r\n\"effectiveDate\": \"2020-01-01T08:00:00Z\",\r\n\"exchangeRatesList\": [\r\n{\r\n\"currencyCode\": \"TJS\",\r\n\"sellRate\": 0.1519,\r\n\"buyRate\": 0.1533,\r\n\"participantId\": 10003\r\n},\r\n{\r\n\"currencyCode\": \"TJS\",\r\n\"sellRate\": 0.1518,\r\n\"buyRate\": 0.1534,\r\n\"participantId\": 10004\r\n}\r\n]\r\n}";
 
-            var exchangeRateList = new List<ExchangeRate>
-            {
-                new ExchangeRate{BuyRate = 0, SellRate = 0, CurrencyCode = "1", ParticipantId = 1},
-                new ExchangeRate{BuyRate = 0, SellRate = 0, CurrencyCode = "2", ParticipantId = 2}
-            };
-
-            exchangeRates.ExchangeRatesList = exchangeRateList;
+            var exchangeRates = JsonSerializer.Deserialize<ExchangeRateModelsResponse>(jsonText);
 
             return exchangeRates;
+
         }
     }
 }
