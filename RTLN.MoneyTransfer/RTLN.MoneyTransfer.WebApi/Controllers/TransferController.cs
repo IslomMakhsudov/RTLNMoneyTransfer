@@ -26,21 +26,22 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         [HttpGet("check")]
         public async Task<IActionResult> CheckTransfer(CheckTransferModelRequest modelRequest)
         {
-            var result = await _checkTransferService.CheckTransferAsync(modelRequest);
+            var result = _checkTransferService.CheckTransferTest();
             return Ok(result);
         }
 
         [HttpGet("confirm")]
         public async Task<IActionResult> ConfirmTransfer(ConfirmTransferModelRequest modelRequest)
         {
-            var result = await _confirmTransferService.ConfirmTransferAsync(modelRequest);
+            var result = _confirmTransferService.ConfirmTransferTest();
+
             return Ok(result);
         }
 
         [HttpGet("state")]
         public async Task<IActionResult> StateOfTransfer(StateOfTransferModelRequest modelRequest)
         {
-            var result = await _stateOfTransferService.StateOfTransferAsync(modelRequest);
+            var result = _stateOfTransferService.StateOfTransferTest();
             return Ok(result);
         }
 

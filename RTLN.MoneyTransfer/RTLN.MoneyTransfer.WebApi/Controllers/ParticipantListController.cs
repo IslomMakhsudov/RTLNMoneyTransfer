@@ -21,7 +21,7 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetParticipantList(ParticipantListModelRequest modelRequest)
         {
-            var result = await _participantListService.GetParticipantListAsync(modelRequest);
+            var result = _participantListService.GetParticipantListTest();
             return Ok(result); 
         }
     }

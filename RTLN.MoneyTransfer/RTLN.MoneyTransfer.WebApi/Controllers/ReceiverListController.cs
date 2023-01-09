@@ -19,7 +19,7 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetReceiverList(ReceiverListModelRequest modelRequest)
         {
-            var result = await _receiverListService.GetReceiverListAsync(modelRequest);
+            var result = _receiverListService.GetReceiverListTest();
             return Ok(result);
         }
     }

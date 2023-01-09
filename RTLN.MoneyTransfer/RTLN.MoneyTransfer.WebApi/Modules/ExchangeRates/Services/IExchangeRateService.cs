@@ -6,5 +6,7 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services
     public interface IExchangeRateService
     {
         public Task<ExchangeRateModelsResponse> GetExchangeRatesAsync(ExchangeRateModelRequest modelRequest);
+
+        public string GetExchangeRatesTest();
     }
 }

@@ -6,5 +6,6 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.ReceiverList.Services
     public interface IReceiverListService
     {
         public Task<ReceiverListModelResponse> GetReceiverListAsync(ReceiverListModelRequest modelRequest);
+        public string GetReceiverListTest();
     }
 }

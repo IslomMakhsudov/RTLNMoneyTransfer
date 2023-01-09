@@ -18,7 +18,7 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetExchangeRate([FromBody] ExchangeRateModelRequest modelRequest)
         {
-            var result = await _exchangeRateService.GetExchangeRatesAsync(modelRequest);
+            var result = _exchangeRateService.GetExchangeRatesTest();
             return Ok(result);
         }
     }

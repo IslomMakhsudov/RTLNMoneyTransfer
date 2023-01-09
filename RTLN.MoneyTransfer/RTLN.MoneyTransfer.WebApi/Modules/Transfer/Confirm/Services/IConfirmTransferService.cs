@@ -6,5 +6,6 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.Services
     public interface IConfirmTransferService
     {
         public Task<ConfirmTransferModelResponse> ConfirmTransferAsync(ConfirmTransferModelRequest modelRequest);
+        public string ConfirmTransferTest();
     }
 }

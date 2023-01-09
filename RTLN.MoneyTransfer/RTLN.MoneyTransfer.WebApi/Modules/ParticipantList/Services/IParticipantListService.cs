@@ -6,5 +6,6 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.ParticipantList.Services
     public interface IParticipantListService
     {
         public Task<ParticipantListModelResponse> GetParticipantListAsync(ParticipantListModelRequest modelRequest);
+        public string GetParticipantListTest();
     }
 }

@@ -6,5 +6,6 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.Services
     public interface ICheckTransferService
     {
         public Task<CheckTransferModelResponse> CheckTransferAsync(CheckTransferModelRequest modelRequest);
+        public string CheckTransferTest();
     }
 }
