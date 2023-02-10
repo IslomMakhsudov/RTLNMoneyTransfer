@@ -5,8 +5,8 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.Services
 {
     public interface IStateOfTransferService
     {
-        public Task<StateOfTransferModelResponse> StateOfTransferAsync(StateOfTransferModelRequest modelRequest);
+        public Task<ToPlatformStateModelResponse> ToPlatform(ToPlatformStateModelRequest modelRequest);
 
-        public string StateOfTransferTest();
+        public Task<FromPlatformStateModelResponse> FromPlatform(FromPlatformStateModelRequest modelRequest);
     }
 }

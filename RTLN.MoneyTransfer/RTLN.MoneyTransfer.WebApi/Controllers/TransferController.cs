@@ -27,6 +27,7 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         public async Task<IActionResult> CheckTransfer(CheckTransferModelRequest modelRequest)
         {
             var result = _checkTransferService.CheckTransferTest();
+
             return Ok(result);
         }
 
@@ -39,11 +40,17 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         }
 
         [HttpGet("state")]
-        public async Task<IActionResult> StateOfTransfer(StateOfTransferModelRequest modelRequest)
+        public async Task<IActionResult> ToPlatformTransferState(ToPlatformStateModelRequest modelRequest)
         {
             var result = _stateOfTransferService.StateOfTransferTest();
+
             return Ok(result);
         }
 
+        [HttpPost("state")]
+        public async Task<IActionResult> FromPlatfromTransferState(ToPlatformStateModelRequest modelRequest)
+        {
+            var result = _stateOfTransferService.
+        }
     }
 }

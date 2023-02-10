@@ -2,7 +2,7 @@
 
 namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelResponses
 {
-    public class StateOfTransferModelResponse
+    public class ToPlatformStateModelResponse
     {
         public string PlatformReferenceNumber { get; set; }
         public Originator Originator { get; set; }
