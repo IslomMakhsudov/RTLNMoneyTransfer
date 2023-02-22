@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.ModelRequests;
-using RTLN.MoneyTransfer.WebApi.Modules.ExchangeRates.Services;
-
-namespace RTLN.MoneyTransfer.WebApi.Controllers
+﻿namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
     [Route("v2/[controller]")]
     [ApiController]

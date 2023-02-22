@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelRequests
+﻿namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelRequests
 {
     public class ToPlatformStateModelRequest
     {

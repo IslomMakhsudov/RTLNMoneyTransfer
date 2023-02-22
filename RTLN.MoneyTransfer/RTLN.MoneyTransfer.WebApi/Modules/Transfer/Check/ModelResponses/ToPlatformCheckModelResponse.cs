@@ -2,7 +2,7 @@
 
 namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.ModelResponses
 {
-    public class CheckTransferModelResponse
+    public class ToPlatformCheckModelResponse
     {
         public string PlatformReferenceNumber { get; set; }
         public Originator Originator { get; set; }

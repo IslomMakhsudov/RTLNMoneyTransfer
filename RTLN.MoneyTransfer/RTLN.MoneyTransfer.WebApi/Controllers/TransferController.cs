@@ -1,13 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.ModelRequests;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.Services;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.ModelRequests;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.Services;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelRequests;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.Services;
-
-namespace RTLN.MoneyTransfer.WebApi.Controllers
+﻿namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
     [Route("v2/[controller]")]
     [ApiController]
@@ -24,17 +15,17 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         }
 
         [HttpGet("check")]
-        public async Task<IActionResult> CheckTransfer(CheckTransferModelRequest modelRequest)
+        public async Task<IActionResult> CheckTransfer(ToPlatformCheckModelRequest modelRequest)
         {
-            var result = _checkTransferService.CheckTransferTest();
+            var result = _checkTransferService.ToPlatform(modelRequest);
 
             return Ok(result);
         }
 
         [HttpGet("confirm")]
-        public async Task<IActionResult> ConfirmTransfer(ConfirmTransferModelRequest modelRequest)
+        public async Task<IActionResult> ConfirmTransfer(ToPlatformConfirmModelRequest modelRequest)
         {
-            var result = _confirmTransferService.ConfirmTransferTest();
+            var result = _confirmTransferService.ToPlatform(modelRequest);
 
             return Ok(result);
         }
@@ -42,15 +33,17 @@ namespace RTLN.MoneyTransfer.WebApi.Controllers
         [HttpGet("state")]
         public async Task<IActionResult> ToPlatformTransferState(ToPlatformStateModelRequest modelRequest)
         {
-            var result = _stateOfTransferService.StateOfTransferTest();
+            var result = await _stateOfTransferService.ToPlatform(modelRequest);
 
             return Ok(result);
         }
 
         [HttpPost("state")]
-        public async Task<IActionResult> FromPlatfromTransferState(ToPlatformStateModelRequest modelRequest)
+        public async Task<IActionResult> FromPlatformTransferState(FromPlatformStateModelRequest modelRequest)
         {
-            var result = _stateOfTransferService.
+            var result = await _stateOfTransferService.FromPlatform(modelRequest);
+
+            return Ok(result);
         }
     }
 }

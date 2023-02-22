@@ -1,13 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using RestSharp;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.ModelResponses;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelRequests;
-using RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.ModelResponses;
-using RTLN.MoneyTransfer.WebApi.Services;
-using System.Data;
-using System.Net;
-
-namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.Services
+﻿namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.State.Services
 {
     public class StateOfTransferService : IStateOfTransferService
     {

@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RTLN.MoneyTransfer.WebApi.Modules.ReceiverList.ModelRequests;
-using RTLN.MoneyTransfer.WebApi.Modules.ReceiverList.ModelResponses;
-using RTLN.MoneyTransfer.WebApi.Modules.ReceiverList.Services;
-
-namespace RTLN.MoneyTransfer.WebApi.Controllers
+﻿namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
     [Route("v2/[controller]")]
     [ApiController]

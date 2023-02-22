@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.ModelRequests
 {
-    public class CheckTransferModelRequest
+    public class ToPlatformCheckModelRequest
     {
         [JsonRequired]
         public string OriginatorReferenceNumber { get; set; }

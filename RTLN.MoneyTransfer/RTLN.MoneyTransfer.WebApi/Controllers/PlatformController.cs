@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using RTLN.MoneyTransfer.Core.Entities;
-using RTLN.MoneyTransfer.Infrastructure;
-
-namespace RTLN.MoneyTransfer.WebApi.Controllers
+﻿namespace RTLN.MoneyTransfer.WebApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
