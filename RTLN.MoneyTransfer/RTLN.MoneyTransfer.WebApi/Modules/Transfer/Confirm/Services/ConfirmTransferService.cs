@@ -64,7 +64,7 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Confirm.Services
                 {
                     await reader.ReadAsync();
 
-                    var modelResponse = new FromPlatformCheckModelResponse();
+                    var modelResponse = new FromPlatformConfirmModelResponse();
 
                     modelResponse.PlatformReferenceNumber = reader.GetString("PlatformReferenceNumber");
                     modelResponse.TransferState.State = reader.GetString("State");

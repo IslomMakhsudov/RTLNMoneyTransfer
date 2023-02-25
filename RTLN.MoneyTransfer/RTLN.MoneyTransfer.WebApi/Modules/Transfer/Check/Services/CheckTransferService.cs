@@ -92,10 +92,7 @@ namespace RTLN.MoneyTransfer.WebApi.Modules.Transfer.Check.Services
 
             var response = await client.PostAsync<ToPlatformCheckModelResponse>(request);
 
-            if (response == null)
-                throw new InvalidOperationException("");
-
-            return response;
+            return response ?? throw new InvalidOperationException("");
         }
 
         private SqlParameter CreateParameter(List<Fee> list)
