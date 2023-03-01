@@ -4,26 +4,25 @@ using System.Text;
 namespace RTLN.MoneyTransfer.WebApi.Services {
     public class HashService : IHashService {
         private readonly IConfiguration _config;
-        public HashService(IConfiguration config)
-        {
+        public HashService(IConfiguration config) {
             _config = config;
         }
 
         public string CalculateSignature(ToPlatformCheckModelRequest model) {
-            
-            var parameters = new List<KeyValuePair<string, object>> {
-                new KeyValuePair<string, object>("originatorReferenceNumber", model.OriginatorReferenceNumber ?? "null"),
-                new KeyValuePair<string, object>("originator/identification/type", model.Originator.Identification.Type ?? "null"),
-                new KeyValuePair<string, object>("originator/identification/value", model.Originator.Identification.Value ?? "null"),
-                new KeyValuePair<string, object>("originator/participant/participantId", model.Originator.Participant.ParticipantId.ToString() ?? "null"),
-                new KeyValuePair<string, object>("originator/nationality", model.Originator.Nationality ?? "null"),
-                new KeyValuePair<string, object>("receiver/identification/type", model.Receiver.Identification.Type ?? "null"),
-                new KeyValuePair<string, object>("receiver/identification/type", model.Receiver.Identification.Value ?? "null"),
-                new KeyValuePair<string, object>("receiver/participant/participantId", model.Receiver.Participant.ParticipantId.ToString() ?? "null"),
-                new KeyValuePair<string, object>("paymentAmount/amount", model.PaymentAmount.Amount.ToString() ?? "null"),
-                new KeyValuePair<string, object>("paymentAmount/currency", model.PaymentAmount.Currency ?? "null"),
-                new KeyValuePair<string, object>("receivingAmount/amount", model.ReceivingAmount.Amount.ToString() ?? "null"),
-                new KeyValuePair<string, object>("receivingAmount/currency", model.ReceivingAmount.Currency ?? "null")
+
+            var parameters = new Dictionary<string, object> {
+                {"originatorReferenceNumber", model.OriginatorReferenceNumber ?? "null" },
+                {"originator/identification/type", model.Originator.Identification.Type ?? "null"},
+                {"originator/identification/value", model.Originator.Identification.Value ?? "null"},
+                {"originator/participant/participantId", model.Originator.Participant.ParticipantId.ToString() ?? "null"},
+                {"originator/nationality", model.Originator.Nationality ?? "null"},
+                {"receiver/identification/type", model.Receiver.Identification.Type ?? "null"},
+                {"receiver/identification/type", model.Receiver.Identification.Value ?? "null"},
+                {"receiver/participant/participantId", model.Receiver.Participant.ParticipantId.ToString() ?? "null"},
+                {"paymentAmount/amount", model.PaymentAmount.Amount.ToString() ?? "null"},
+                {"paymentAmount/currency", model.PaymentAmount.Currency ?? "null"},
+                {"receivingAmount/amount", model.ReceivingAmount.Amount.ToString() ?? "null"},
+                {"receivingAmount/currency", model.ReceivingAmount.Currency ?? "null" }
             };
 
             var result = GetSignedBase64Hash(parameters);
@@ -31,28 +30,27 @@ namespace RTLN.MoneyTransfer.WebApi.Services {
         }
 
         public string CalculateSignature(ToPlatformConfirmModelRequest model) {
-            var parameters = new List<KeyValuePair<string, object>> {
-                new KeyValuePair<string, object>("originatorReferenceNumber", model.OriginatorSignature ?? "null"),
-                new KeyValuePair<string, object>("platformReferenceNumber", model.PlatformReferenceNumber ?? "null"),
-                new KeyValuePair<string, object>("originator/identification/type", model.Originator.Identification.Type ?? "null"),
-                new KeyValuePair<string, object>("originator/identification/value", model.Originator.Identification.Value ?? "null"),
-                new KeyValuePair<string, object>("originator/participant/participantId", model.Originator.Participant.ParticipantId.ToString() ?? "null"),
-                new KeyValuePair<string, object>("originator/fullName", model.Originator.FullName ?? "null"),
-                new KeyValuePair<string, object>("originator/nationality", model.Originator.Nationality ?? "null"),
-                new KeyValuePair<string, object>("receiver/identification/type", model.Receiver.Identification.Type ?? "null"),
-                new KeyValuePair<string, object>("receiver/identification/type", model.Receiver.Identification.Value ?? "null"),
-                new KeyValuePair<string, object>("receiver/participant/participantId", model.Receiver.Participant.ParticipantId.ToString() ?? "null"),
-                new KeyValuePair<string, object>("paymentAmount/amount", model.PaymentAmount.Amount.ToString() ?? "null"),
-                new KeyValuePair<string, object>("paymentAmount/currency", model.PaymentAmount.Currency ?? "null"),
-                new KeyValuePair<string, object>("receivingAmount/amount", model.ReceivingAmount.Amount.ToString() ?? "null"),
-                new KeyValuePair<string, object>("receivingAmount/currency", model.ReceivingAmount.Currency ?? "null")
+            var parameters = new Dictionary<string, object> {
+                { "platformReferenceNumber", model.PlatformReferenceNumber ?? "null" },
+                { "originator/identification/type", model.Originator.Identification.Type ?? "null"},
+                { "originator/identification/value", model.Originator.Identification.Value ?? "null"},
+                { "originator/participant/participantId", model.Originator.Participant.ParticipantId.ToString() ?? "null"},
+                { "originator/fullName", model.Originator.FullName ?? "null"},
+                { "originator/nationality", model.Originator.Nationality ?? "null"},
+                { "receiver/identification/type", model.Receiver.Identification.Type ?? "null"},
+                { "receiver/identification/type", model.Receiver.Identification.Value ?? "null"},
+                { "receiver/participant/participantId", model.Receiver.Participant.ParticipantId.ToString() ?? "null"},
+                { "paymentAmount/amount", model.PaymentAmount.Amount.ToString() ?? "null"},
+                { "paymentAmount/currency", model.PaymentAmount.Currency ?? "null"},
+                { "receivingAmount/amount", model.ReceivingAmount.Amount.ToString() ?? "null"},
+                { "receivingAmount/currency", model.ReceivingAmount.Currency ?? "null" }
             };
 
             var result = GetSignedBase64Hash(parameters);
             return result;
         }
 
-        private string GetSignedBase64Hash(List<KeyValuePair<string, object>> parameters) {
+        private string GetSignedBase64Hash(Dictionary<string, object> parameters) {
             var strToHash = new StringBuilder();
             foreach (var parameter in parameters) {
                 strToHash.Append(parameter.Value);
